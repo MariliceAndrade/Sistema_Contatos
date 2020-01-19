@@ -21,27 +21,37 @@ class ContatoController extends Controller{
     }
 
     public function salvar(Request $req){
-        $dadosProd = $req->all();
-        //dd($dadosProd); //testando dados
+        $dadosCont = $req->all();
+        //dd($dadosCont); //testando dados
         
-        Produto::create($dadosProd); //registrando dados no banco
+        if($req->hasFile('imagem')){ //tratamento da imagem
+            $imagem = $req->file('imagem');
+            $num = rand(1111,9999);
+            $diretorio = "img/contatos";
+            $extensao = $imagem->guessClientExtension();
+            $nomeImagem = "img_".$num.".".$extensao;
+            $imagem->move($diretorio, $nomeImagem);
+            $dadosCont['imagem'] = $diretorio."/".$nomeImagem;
+        }
+
+        Contato::create($dadosCont); //registrando dados no banco
         return redirect()->route('admin.contatos');
     }
 
     public function editar($id){
-        $registro = Produto::find($id);
+        $registro = Contato::find($id); //buscando o registro do id
         return view('admin.contatos.editar', compact('registro'));
     }
 
     public function atualizar(Request $req, $id){
-        $dadosProd = $req->all();
+        $dadosCont = $req->all();
         
-        Produto::find($id)->update($dadosProd); //alterando os dados no banco
+        Contato::find($id)->update($dadosCont); //alterando os dados no banco
         return redirect()->route('admin.contatos');
     }
 
     public function deletar($id){
-        Produto::find($id)->delete(); //deletando os dados no banco
+        Contato::find($id)->delete(); //deletando os dados no banco
         return redirect()->route('admin.contatos');
     }
 }

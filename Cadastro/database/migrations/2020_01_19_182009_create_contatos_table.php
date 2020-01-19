@@ -18,7 +18,7 @@ class CreateContatosTable extends Migration
             $table->string('nome', 100);
             $table->string('email');
             $table->string('telefone', 13);
-            $table->string('imagem');
+            $table->string('imagem')->nullable();
             $table->timestamps();
         });
     }

@@ -15,9 +15,9 @@ Route::get('/', function () {
     return view('login');
 });
 
-Route::get('/admin/cadastros', 'CadastroController@index')->name('admin.cadastros');
-Route::get('/admin/cadastros/adicionar', 'Admin\CadastroController@adicionar')->name('admin.cadastros.adicionar');
-Route::post('/admin/cadastros/salvar', 'Admin\CadastroController@salvar')->name('admin.cadastros.salvar');
-Route::get('/admin/cadastros/editar/{id}', 'Admin\CadastroController@editar')->name('admin.cadastros.editar');
-Route::put('/admin/cadastros/atualizar/{id}', 'Admin\CadastroController@atualizar')->name('admin.cadastros.atualizar');
-Route::get('/admin/cadastros/deletar/{id}', 'Admin\CadastroController@deletar')->name('admin.cadastros.deletar');
+Route::get('/admin/contatos', 'Admin\ContatoController@index')->name('admin.contatos');
+Route::get('/admin/contatos/adicionar', 'Admin\ContatoController@adicionar')->name('admin.contatos.adicionar');
+Route::post('/admin/contatos/salvar', 'Admin\ContatoController@salvar')->name('admin.contatos.salvar');
+Route::get('/admin/contatos/editar/{id}', 'Admin\ContatoController@editar')->name('admin.contatos.editar');
+Route::put('/admin/contatos/atualizar/{id}', 'Admin\ContatoController@atualizar')->name('admin.contatos.atualizar');
+Route::get('/admin/contatos/deletar/{id}', 'Admin\ContatoController@deletar')->name('admin.contatos.deletar');

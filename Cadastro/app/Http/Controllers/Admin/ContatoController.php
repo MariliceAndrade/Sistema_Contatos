@@ -7,9 +7,9 @@ use Illuminate\Http\Request;
 use App\Contato; //declaração do Model
 
 class ContatoController extends Controller{
-    // public function __construct(){ //autenticação para acesso
-    //     $this->middleware('auth');
-    // }
+    public function __construct(){ //autenticação para acesso
+        $this->middleware('auth');
+    }
     
     public function index(){
         $registros = Contato::all(); //buscando tudo da tabela de contatos
@@ -45,6 +45,16 @@ class ContatoController extends Controller{
 
     public function atualizar(Request $req, $id){
         $dadosCont = $req->all();
+
+        if($req->hasFile('imagem')){ //tratamento da imagem
+            $imagem = $req->file('imagem');
+            $num = rand(1111,9999);
+            $diretorio = "img/contatos";
+            $extensao = $imagem->guessClientExtension();
+            $nomeImagem = "img_".$num.".".$extensao;
+            $imagem->move($diretorio, $nomeImagem);
+            $dadosCont['imagem'] = $diretorio."/".$nomeImagem;
+        }
         
         Contato::find($id)->update($dadosCont); //alterando os dados no banco
         return redirect()->route('admin.contatos');

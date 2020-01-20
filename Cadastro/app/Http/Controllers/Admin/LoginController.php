@@ -17,10 +17,9 @@ class LoginController extends Controller{
         if(Auth::attempt(['email'=>$dados['email'],'password'=>$dados['senha']])){
             return redirect()->route('admin.contatos');
         }else{
-            return redirect()->route('login');
-        }
-
-        // return redirect()->route('login');
+            //return redirect()->route('login')->with('warning', 'Dados inválidos. Insira os dados de Admin corretamente!');
+            return redirect()->back()->with('warning', 'Dados inválidos. Insira os dados de Admin corretamente!');
+         }
     }
 
     public function sair(){

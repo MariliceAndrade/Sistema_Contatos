@@ -9,14 +9,14 @@
                 <h2 class="center">Editar Contato</h2>
             </div>
             <div class="row">
-            <form class="form-group" action="{{ route('admin.contatos.atualizar', $registro->id) }}" method="post" enctype="multipart/form-data">
+                <form class="form-group" action="{{ route('admin.contatos.atualizar', $registro->id) }}" method="post" enctype="multipart/form-data">
                     {{ csrf_field() }}
                     <input type="hidden" name="_method" value="put">
                     @include('admin.contatos.form')
                     <button class="btn btn-outline-success">Atualizar</button>
-                    
+                        
                     <a class="btn btn-outline-danger" href="{{ route('admin.contatos') }}">Cancelar</a>
-            </form>
+                </form>
             </div>
         </div>
     </div>

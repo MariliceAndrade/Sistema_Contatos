@@ -13,9 +13,7 @@
 Route::get('/', 'Admin\LoginController@index')->name('login');
 Route::post('/login', 'Admin\LoginController@login')->name('admin.login.entrar');
 Route::get('/login/sair', 'Admin\LoginController@sair')->name('admin.login.sair');
-// Route::get('/', function () {
-//     return view('login');
-// });
+
 
 Route::group(['middleware' => ['auth']], function(){
 Route::get('/admin/contatos', 'Admin\ContatoController@index')->name('admin.contatos');

@@ -4,11 +4,11 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Cadastro</title>
+        <title>Sistema Contatos</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
         <link href="/css/app.css" rel="stylesheet">
 
         <!-- Styles -->
@@ -55,6 +55,7 @@
             }
         </style>
     </head>
+
     <body>
         <div class="flex-center position-ref full-height">
 
@@ -62,13 +63,18 @@
                 <div class="title m-b-md">
                     Bem vindo!
                 </div>
-
+                @if($message = Session::get('warning'))
+                    <div class="alert alert-warning alert-dismissible fade show">
+                        <button type="button" class="close" data-dismiss="alert">x</button>	
+                        <strong>{{ $message }}</strong>
+                    </div>
+                @endif
                 <div>
                     <form action="{{ route('admin.login.entrar') }}" method="post">
                         {{ csrf_field() }}
                         <div class="form-group">
                             <label for="exampleInputEmail1">E-mail</label>
-                            <input type="email" name="email" class="form-control" id="exampleInputEmail1"> <!-- aria-describedby="emailHelp" -->
+                            <input type="email" name="email" class="form-control" id="exampleInputEmail1"> 
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">Senha</label>
@@ -77,8 +83,10 @@
                         <button type="submit" class="btn btn-outline-success">Entrar</button>
                     </form>
                 </div>
-
             </div>
         </div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js" ></script>
     </body>
 </html>

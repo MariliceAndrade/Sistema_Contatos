@@ -16,5 +16,5 @@
 <div class="form-group">
     <label for="inputImagem">Imagem</label>
     <input type="file" name="imagem" class="form-control-file" id="inputImagem">
-  </div>
+</div>
 

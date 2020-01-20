@@ -14,6 +14,8 @@
                     <input type="hidden" name="_method" value="put">
                     @include('admin.contatos.form')
                     <button class="btn btn-outline-success">Atualizar</button>
+                    
+                    <a class="btn btn-outline-danger" href="{{ route('admin.contatos') }}">Cancelar</a>
             </form>
             </div>
         </div>
